@@ -9,25 +9,10 @@
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <td>1</td>
-            <td>Lorem ipsum ipsum ipsum</td>
-            <td><a href="">Ver</a></td>
-        </tr>
-        <tr>
-            <td>1</td>
-            <td>Lorem ipsum ipsum ipsum</td>
-            <td><a href="">Ver</a></td>
-        </tr>
-        <tr>
-            <td>1</td>
-            <td>Lorem ipsum ipsum ipsum</td>
-            <td><a href="">Ver</a></td>
-        </tr>
-        <tr>
-            <td>1</td>
-            <td>Lorem ipsum ipsum ipsum</td>
-            <td><a href="">Ver</a></td>
+        <tr *ngFor="let post of posts">
+            <td>{{post.id}}</td>
+            <td>{{post.title}}</td>
+            <td (click)="seePost(post.id)">Ver</td>
         </tr>
     </tbody>
 </table>
