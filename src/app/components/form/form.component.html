@@ -1,0 +1,18 @@
+<form [formGroup]="newCommentForm" (ngSubmit)="saveComment()">
+    <h3>Nuevo comentario</h3>
+
+    <!-- Name -->
+    <input type="text" placeholder="Name" formControlName="name" [class.is-invalid]="invalidName">
+    <small *ngIf="invalidName">Error</small>
+
+    <!-- Email -->
+    <input type="email" placeholder="ejemplo@gmail.com" formControlName="email" [class.is-invalid]="invalidEmail">
+    <small *ngIf="invalidEmail">Error</small>
+
+    <!-- Messaga -->
+    <textarea name="" id="" cols="30" rows="10" formControlName="message"
+        [class.is-invalid]="invalidMessage"></textarea>
+    <small *ngIf="invalidMessage">Error</small>
+
+    <button type="submit">Agregar</button>
+</form>

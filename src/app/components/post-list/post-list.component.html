@@ -12,7 +12,7 @@
         <tr *ngFor="let post of posts">
             <td>{{post.id}}</td>
             <td>{{post.title}}</td>
-            <td (click)="seePost(post.id)">Ver</td>
+            <td><a [routerLink]="['/post', post.id]">Ver</a></td>
         </tr>
     </tbody>
 </table>

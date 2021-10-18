@@ -11,16 +11,12 @@ export class PostListComponent {
 
   posts: any[] = [];
 
-  constructor(private postService: PostService, private router: Router) {
+  constructor(private postService: PostService) {
 
     //Función que obtiene el listado de comentarios
     this.postService.getPosts()
       .subscribe((data: any) => {
         this.posts = data
       })
-  }
-
-  seePost(id: number) {
-    this.router.navigate(['post', id])
   }
 }

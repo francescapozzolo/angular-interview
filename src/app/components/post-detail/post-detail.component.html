@@ -1,5 +1,9 @@
-<h1>Detail Post: {{data.id}}</h1>
+<h1 style="display: inline;">Detail Post: {{post.id}}</h1>
+<span>Last comment: {{date}}</span>
 
-<h2>{{data.title}}</h2>
+<h2>{{post.title}}</h2>
 
-<p>{{data.body}}</p>
+<p>{{post.body}}</p>
+
+<app-comments [postId]="post.id" (showForm)="showForm()"></app-comments>
+<app-form (setDate)="printLastComment($event)" *ngIf="displayForm"></app-form>

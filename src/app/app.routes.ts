@@ -3,8 +3,8 @@ import { PostDetailComponent } from "./components/post-detail/post-detail.compon
 import { PostListComponent } from "./components/post-list/post-list.component";
 
 export const ROUTES: Routes = [
-    { path: "post", component: PostListComponent },
+    { path: "", component: PostListComponent },
     { path: "post/:id", component: PostDetailComponent },
-    // { path: "", pathMatch: "full", redirectTo: "home" },
-    // { path: "**", pathMatch: "full", redirectTo: "home" }
+    // { path: "posts", pathMatch: "full", redirectTo: "posts" },
+    // { path: "**", pathMatch: "full", redirectTo: "posts" }
 ]

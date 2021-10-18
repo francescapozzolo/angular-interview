@@ -20,4 +20,8 @@ export class PostService {
     return this.http.get(`https://jsonplaceholder.typicode.com/posts/${id}`)
       .pipe(map((data: any) => data));
   }
+
+  getComments(postId: number) {
+    return this.http.get(`https://jsonplaceholder.typicode.com/posts/${postId}/comments`)
+  }
 }
