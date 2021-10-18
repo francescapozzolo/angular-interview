@@ -1,8 +1,11 @@
 <div class="container-comments">
     <h3>Comentarios</h3>
-    <div class="container-comment" *ngFor="let comment of comments">
-        <p>Nombre: {{comment.name}}</p>
-        <p>Comentario: {{comment.body}}</p>
+    <div *ngFor="let comment of comments">
+        <div class="container-comment">
+            <p>Nombre: {{comment.name}}</p>
+            <p>Comentario: {{comment.body}}</p>
+        </div>
+        <button *ngIf="comment.isEditable" (click)="deleteComment(comment.id)">delete</button>
     </div>
     <button (click)="displayForm()">Emitir</button>
 </div>

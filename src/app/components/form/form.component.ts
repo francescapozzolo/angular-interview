@@ -1,5 +1,7 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Comment } from 'src/app/models/comment.model';
+import { PostService } from 'src/app/services/post.service';
 
 @Component({
   selector: 'app-form',
@@ -11,9 +13,11 @@ export class FormComponent implements OnInit {
   newCommentForm!: FormGroup;
   date!: Date;
 
+  @Input() postId!: number;
+
   @Output() setDate: EventEmitter<Date>;
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder, private postService: PostService) {
     this.setDate = new EventEmitter();
     this.createForm();
     this.sendComment();
@@ -32,7 +36,7 @@ export class FormComponent implements OnInit {
   }
 
   get invalidMessage() {
-    return this.newCommentForm.get('message')?.invalid && this.newCommentForm.get('message')?.touched
+    return this.newCommentForm.get('body')?.invalid && this.newCommentForm.get('body')?.touched
   }
 
   //Creación del formulario
@@ -40,21 +44,29 @@ export class FormComponent implements OnInit {
     this.newCommentForm = this.formBuilder.group({
       name: ['', [Validators.required, Validators.minLength(2)]],
       email: ['', [Validators.required, Validators.pattern("[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$")]],
-      message: ['', [Validators.required, Validators.maxLength(500)]]
+      body: ['', [Validators.required, Validators.maxLength(500)]]
     });
   }
 
-  //Guardar datos del formulario
   saveComment() {
+    let newComment: Comment
     if (this.newCommentForm.invalid) {
       return Object.values(this.newCommentForm.controls).forEach(control => {
         control.markAsTouched();
       })
     }
     //Reseteo formulario
-    this.newCommentForm.reset();
     this.date = new Date();
-    this.setDate.emit(this.date)
+    this.setDate.emit(this.date);
+    this.postService.addComment({
+      body: this.newCommentForm.controls['body'].value,
+      email: this.newCommentForm.controls['email'].value,
+      id: this.postService.comments[this.postService.comments.length - 1].id + 1,
+      name: this.newCommentForm.controls['name'].value,
+      postId: this.postId,
+      isEditable: true,
+    })
+    this.newCommentForm.reset();
   }
 
   //Enviar los datos del formulario

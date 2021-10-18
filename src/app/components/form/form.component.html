@@ -1,4 +1,4 @@
-<form [formGroup]="newCommentForm" (ngSubmit)="saveComment()">
+<form [formGroup]="newCommentForm" (submit)="saveComment()">
     <h3>Nuevo comentario</h3>
 
     <!-- Name -->
@@ -10,8 +10,7 @@
     <small *ngIf="invalidEmail">Error</small>
 
     <!-- Messaga -->
-    <textarea name="" id="" cols="30" rows="10" formControlName="message"
-        [class.is-invalid]="invalidMessage"></textarea>
+    <textarea name="" id="" cols="30" rows="10" formControlName="body" [class.is-invalid]="invalidMessage"></textarea>
     <small *ngIf="invalidMessage">Error</small>
 
     <button type="submit">Agregar</button>

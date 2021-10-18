@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { PostService } from 'src/app/services/post.service';
-import { Router } from '@angular/router';
+import { Post } from 'src/app/models/post.model';
 
 @Component({
   selector: 'app-post-list',
@@ -9,14 +9,15 @@ import { Router } from '@angular/router';
 })
 export class PostListComponent {
 
-  posts: any[] = [];
+  posts: Post[] = [];
 
   constructor(private postService: PostService) {
 
-    //Función que obtiene el listado de comentarios
+    //Función que obtiene el listado de posteos
     this.postService.getPosts()
-      .subscribe((data: any) => {
+      .subscribe((data: Post[]) => {
         this.posts = data
       })
+    localStorage.setItem('comments', '[]')
   }
 }

@@ -1,5 +1,6 @@
 import { Component, Output, EventEmitter } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Post } from 'src/app/models/post.model';
 import { PostService } from 'src/app/services/post.service';
 
 @Component({
@@ -9,7 +10,7 @@ import { PostService } from 'src/app/services/post.service';
 })
 export class PostDetailComponent {
 
-  post: any;
+  post!: Post;
   date!: Date;
   displayForm: boolean = false;
 
@@ -19,19 +20,21 @@ export class PostDetailComponent {
     })
   }
 
+  //Función que obtiene los detalles del posteo
   getPost(id: number) {
     this.postService.getPost(id)
-      .subscribe((data: any) => {
-        this.post = data
+      .subscribe((post: Post) => {
+        this.post = post
       })
   }
 
+  //Función que imprime la fecha del último posteo
   printLastComment(date: Date) {
     this.date = date
   }
 
+  //Función que muestra el formulario para agregar nuevo comentario
   showForm() {
     this.displayForm = true;
   }
-
 }

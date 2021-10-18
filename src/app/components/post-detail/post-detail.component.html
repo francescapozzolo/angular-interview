@@ -6,4 +6,4 @@
 <p>{{post.body}}</p>
 
 <app-comments [postId]="post.id" (showForm)="showForm()"></app-comments>
-<app-form (setDate)="printLastComment($event)" *ngIf="displayForm"></app-form>
+<app-form (setDate)="printLastComment($event)" *ngIf="displayForm" [postId]="post.id"></app-form>
