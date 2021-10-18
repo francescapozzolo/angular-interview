@@ -1,8 +1,21 @@
 form{
     display: flex;
     flex-direction: column;
+    border: 1px solid black;
+    padding: 1em;
 }
 
-.is-invalid{
-    background-color: red;
+.container-form{
+    border: 1px solid black;
+    margin: 2em;
+    padding: 2em;
+}
+
+input, textarea{
+    margin: 1em 0;
+    resize: none;
+}
+
+small{
+    color: red;
 }

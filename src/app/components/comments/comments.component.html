@@ -1,11 +1,17 @@
 <div class="container-comments">
     <h3>Comentarios</h3>
-    <div *ngFor="let comment of comments">
-        <div class="container-comment">
+    <div *ngIf="loading" class="text-center m-5">
+        <div class="spinner-border" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>
+    <div *ngFor="let comment of comments" class="container-comment">
+        <div class="comment">
             <p>Nombre: {{comment.name}}</p>
             <p>Comentario: {{comment.body}}</p>
         </div>
-        <button *ngIf="comment.isEditable" (click)="deleteComment(comment.id)">delete</button>
+        <i class="fas fa-trash-alt" *ngIf="comment.isEditable" (click)="deleteComment(comment.id)" data-toggle="tooltip"
+            data-placement="top" title="Eliminar comentario"></i>
     </div>
-    <button (click)="displayForm()">Emitir</button>
+    <button (click)="displayForm()" class="btn btn-block btn-primary">Emitir</button>
 </div>

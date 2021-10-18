@@ -1,5 +1,7 @@
-<h1 style="display: inline;">Detail Post: {{post.id}}</h1>
-<span>Last comment: {{date}}</span>
+<div>
+    <h1 style="display: inline;">Detail Post: {{post.id}}</h1>
+    <span>Last comment: {{date | date:'YYYY, MMM, dd '}}</span>
+</div>
 
 <h2>{{post.title}}</h2>
 

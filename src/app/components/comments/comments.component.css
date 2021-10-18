@@ -12,6 +12,13 @@ h3{
 }
 
 .container-comment{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2em;
+}
+
+.comment{
     margin: 1em 0;
 }
 
@@ -24,4 +31,12 @@ button{
     padding: 0 2em;
     align-self: center;
     margin-bottom: 1em;
+}
+
+i{
+    cursor: pointer;
+}
+
+i:hover{
+    font-size: 1.3em;
 }

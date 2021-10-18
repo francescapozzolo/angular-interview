@@ -10,6 +10,7 @@ import { PostService } from 'src/app/services/post.service';
 export class CommentsComponent implements OnInit {
 
   comments: any[] = [];
+  loading: boolean = false;
 
   @Input() postId!: number;
   @Output() showForm: EventEmitter<boolean>
@@ -19,18 +20,19 @@ export class CommentsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.postService.loadStorage())
     if ((this.postService.loadStorage()).length > 0) {
+      this.loading = true;
       this.comments = this.postService.loadStorage();
-      console.log('hola')
+      this.loading = false
     } else {
-      console.log('chau')
+      this.loading = true;
       this.postService.getComments(this.postId)
         .subscribe((data: any) => {
           this.postService.comments = data
           this.comments = data
           this.postService.saveStorage();
         })
+      this.loading = false
     }
   }
 

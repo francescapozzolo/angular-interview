@@ -1,17 +1,22 @@
-<form [formGroup]="newCommentForm" (submit)="saveComment()">
+<form [formGroup]="newCommentForm" (submit)="saveComment()" class="mt-5">
     <h3>Nuevo comentario</h3>
 
-    <!-- Name -->
-    <input type="text" placeholder="Name" formControlName="name" [class.is-invalid]="invalidName">
-    <small *ngIf="invalidName">Error</small>
+    <div class="container-form">
+        <!-- Name -->
+        <input required class=" form-control" type="text" placeholder="Name" formControlName="name"
+            [class.is-invalid]="invalidName">
+        <small *ngIf="invalidName">Este campo es requerido</small>
 
-    <!-- Email -->
-    <input type="email" placeholder="ejemplo@gmail.com" formControlName="email" [class.is-invalid]="invalidEmail">
-    <small *ngIf="invalidEmail">Error</small>
+        <!-- Email -->
+        <input required class="form-control" type="email" placeholder="ejemplo@gmail.com" formControlName="email"
+            [class.is-invalid]="invalidEmail">
+        <small *ngIf="invalidEmail">Ingrese un mail válido</small>
 
-    <!-- Messaga -->
-    <textarea name="" id="" cols="30" rows="10" formControlName="body" [class.is-invalid]="invalidMessage"></textarea>
-    <small *ngIf="invalidMessage">Error</small>
+        <!-- Messaga -->
+        <textarea required class="form-control" placeholder="Agrega tu comentario" cols="30" rows="10"
+            formControlName="body" [class.is-invalid]="invalidMessage"></textarea>
+        <small *ngIf="invalidMessage">No puede tener más de 500 caracteres</small>
 
-    <button type="submit">Agregar</button>
+        <button type="submit" class="btn btn-primary">Agregar</button>
+    </div>
 </form>
