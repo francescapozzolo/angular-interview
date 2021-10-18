@@ -15,6 +15,7 @@ import { PostListComponent } from './components/post-list/post-list.component';
 import { PostDetailComponent } from './components/post-detail/post-detail.component';
 import { CommentsComponent } from './components/comments/comments.component';
 import { FormComponent } from './components/form/form.component';
+import { Error404Component } from './components/error404/error404.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { FormComponent } from './components/form/form.component';
     PostListComponent,
     PostDetailComponent,
     CommentsComponent,
-    FormComponent
+    FormComponent,
+    Error404Component
   ],
   imports: [
     BrowserModule,
