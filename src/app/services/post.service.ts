@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { Comment } from '../models/comment.model';
+import { Post } from '../models/post.model';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -14,14 +16,14 @@ export class PostService {
     this.loadStorage();
   }
 
-  getPosts() {
-    return this.http.get('https://jsonplaceholder.typicode.com/posts')
-      .pipe(map((data: any) => data.slice(0, 10)));
+  getPosts(): Observable<Post[]> {
+    return this.http.get<Post[]>('https://jsonplaceholder.typicode.com/posts')
+      .pipe(map((data: Post[]) => data.slice(0, 10)));
   }
 
   getPost(id: number) {
-    return this.http.get(`https://jsonplaceholder.typicode.com/posts/${id}`)
-      .pipe(map((data: any) => data));
+    return this.http.get<Post>(`https://jsonplaceholder.typicode.com/posts/${id}`)
+      .pipe(map((data: Post) => data));
   }
 
   getComments(postId: number) {

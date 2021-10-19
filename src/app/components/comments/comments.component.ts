@@ -9,7 +9,7 @@ import { PostService } from 'src/app/services/post.service';
 })
 export class CommentsComponent implements OnInit {
 
-  comments: any[] = [];
+  comments: Comment[] = [];
   loading: boolean = false;
 
   @Input() postId!: number;

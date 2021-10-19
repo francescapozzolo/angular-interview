@@ -17,6 +17,7 @@ export class PostListComponent {
     //Función que obtiene el listado de posteos
     this.postService.getPosts()
       .subscribe((data: Post[]) => {
+        console.log(data)
         this.loading = true
         this.posts = data
         this.loading = false
