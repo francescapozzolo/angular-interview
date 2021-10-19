@@ -1,10 +1,11 @@
-<div class="container-comments">
-    <h3>Comentarios</h3>
-    <div *ngIf="loading" class="text-center m-5">
-        <div class="spinner-border" role="status">
-            <span class="visually-hidden">Loading...</span>
-        </div>
+<div *ngIf="loading" class="text-center m-5">
+    <div class="spinner-border" role="status">
+        <span class="visually-hidden">Loading...</span>
     </div>
+</div>
+
+<div *ngIf="!loading" class="container-comments">
+    <h3>Comentarios</h3>
     <div *ngFor="let comment of comments" class="container-comment">
         <div class="comment">
             <p>Nombre: {{comment.name}}</p>

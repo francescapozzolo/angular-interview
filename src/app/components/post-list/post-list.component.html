@@ -1,6 +1,12 @@
 <h1>List Post</h1>
 
-<table>
+<div *ngIf="loading" class="text-center m-5">
+    <div class="spinner-border" role="status">
+        <span class="visually-hidden">Loading...</span>
+    </div>
+</div>
+
+<table *ngIf="!loading">
     <thead>
         <tr>
             <th>ID</th>

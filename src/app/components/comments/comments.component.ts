@@ -25,14 +25,14 @@ export class CommentsComponent implements OnInit {
       this.comments = this.postService.loadStorage();
       this.loading = false
     } else {
-      this.loading = true;
       this.postService.getComments(this.postId)
         .subscribe((data: any) => {
+          this.loading = true;
           this.postService.comments = data
           this.comments = data
           this.postService.saveStorage();
+          this.loading = false
         })
-      this.loading = false
     }
   }
 

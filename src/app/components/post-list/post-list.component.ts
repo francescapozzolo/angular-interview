@@ -10,13 +10,16 @@ import { Post } from 'src/app/models/post.model';
 export class PostListComponent {
 
   posts: Post[] = [];
+  loading: boolean = true;
 
   constructor(private postService: PostService) {
 
     //Función que obtiene el listado de posteos
     this.postService.getPosts()
       .subscribe((data: Post[]) => {
+        this.loading = true
         this.posts = data
+        this.loading = false
       })
     localStorage.setItem('comments', '[]')
   }

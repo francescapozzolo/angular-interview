@@ -10,13 +10,13 @@
         <!-- Email -->
         <input required class="form-control" type="email" placeholder="ejemplo@gmail.com" formControlName="email"
             [class.is-invalid]="invalidEmail">
-        <small *ngIf="invalidEmail">Ingrese un mail válido</small>
+        <small *ngIf="invalidEmail">Este campo es requerido, ingrese un formato válido</small>
 
         <!-- Messaga -->
         <textarea required class="form-control" placeholder="Agrega tu comentario" cols="30" rows="10"
             formControlName="body" [class.is-invalid]="invalidMessage"></textarea>
-        <small *ngIf="invalidMessage">No puede tener más de 500 caracteres</small>
+        <small *ngIf="invalidMessage">Este campo es requerido. No puede tener más de 500 caracteres</small>
 
-        <button type="submit" class="btn btn-primary">Agregar</button>
     </div>
+    <button type="submit" class="btn btn-primary">Agregar</button>
 </form>
